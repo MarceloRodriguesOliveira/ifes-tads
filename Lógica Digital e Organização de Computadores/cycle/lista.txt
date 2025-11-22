@@ -1,4 +1,0 @@
-file 'tiago-ac.mp4'
-file 'yuri-ac.mp4'
-file 'vini-ac.mp4'
-file 'sim-cpu.mp4'
