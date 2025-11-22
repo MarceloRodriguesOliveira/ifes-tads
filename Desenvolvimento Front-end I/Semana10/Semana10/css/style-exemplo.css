@@ -1,0 +1,89 @@
+/* Estilo adicional apenas para layout do exemplo */
+/* Linha 1: Comentário - Indica que este bloco CSS é principalmente para o layout visual do exemplo específico, não estilos globais. */
+
+body { display: grid; place-items: center; min-height: 80vh; }
+/* Linha 2: Aplica ao <body>: */
+/* - display: grid: Define o body como um container grid. */
+/* - place-items: center: Atalho para centralizar o conteúdo direto do body (o .container-exemplo) horizontal e verticalmente dentro do grid. */
+/* - min-height: 80vh: Garante que o body tenha pelo menos 80% da altura da janela de visualização, ajudando na centralização vertical. */
+
+h1, h2{
+    text-align: center;
+}
+
+h2{
+    color: #057c01;
+}
+
+.container-exemplo { max-width: 600px; width: 90%; }
+/* Linha 3: Aplica à classe .container-exemplo: */
+/* - max-width: 600px: Limita a largura máxima do container a 600 pixels. */
+/* - width: 90%: Define a largura como 90% do espaço disponível no pai (body), tornando-o responsivo até o limite de 600px. */
+
+/* Estilos para a lista de startups */
+/* Linha 4: Comentário - Indica que as regras a seguir são específicas para a lista de startups. */
+
+#lista-startups {
+/* Linha 5: Seleciona o elemento com o ID 'lista-startups' (provavelmente um <ul>): */
+
+    list-style: none; /* Remove bolinhas */
+/* Linha 6:   - list-style: none: Remove os marcadores padrão da lista (como bolinhas ou números). */
+
+    padding: 0;
+/* Linha 7:   - padding: 0: Remove o preenchimento interno padrão à esquerda que as listas geralmente têm. */
+
+    margin-top: var(--space-3);
+/* Linha 8:   - margin-top: var(--space-3): Adiciona uma margem acima da lista, usando uma variável CSS (--space-3) definida em outro lugar (provavelmente 16px). */
+}
+
+#lista-startups li {
+/* Linha 9: Seleciona todos os elementos <li> que são descendentes do elemento #lista-startups: */
+
+    padding: var(--space-2) var(--space-3); /* Usa variáveis do style.css */
+/* Linha 10:  - padding: Define o espaçamento interno dos itens da lista (vertical: --space-2, horizontal: --space-3), usando variáveis CSS. */
+
+    border: 1px solid var(--border); /* Usa variável do style.css */
+/* Linha 11:  - border: Adiciona uma borda sólida de 1 pixel, usando a cor da variável --border. */
+
+    border-radius: var(--radius); /* Usa variável do style.css */
+/* Linha 12:  - border-radius: Arredonda os cantos do item da lista, usando o valor da variável --radius. */
+
+    margin-bottom: var(--space-1); /* Usa variável do style.css */
+/* Linha 13:  - margin-bottom: Adiciona uma margem abaixo de cada item, separando-os verticalmente, usando a variável --space-1. */
+
+    cursor: pointer;
+/* Linha 14:  - cursor: pointer: Muda o cursor do mouse para uma "mãozinha" ao passar sobre o item, indicando que ele é clicável. */
+
+    transition: background-color 0.2s, transform 0.1s;
+/* Linha 15:  - transition: Define que as mudanças nas propriedades 'background-color' (duração 0.2s) e 'transform' (duração 0.1s) devem ocorrer de forma suave (animada). */
+}
+
+#lista-startups li:hover {
+/* Linha 16: Seleciona um item da lista (<li>) quando o mouse está sobre ele: */
+
+    background-color: var(--muted); /* Usa variável do style.css */
+/* Linha 17:  - background-color: Muda a cor de fundo para o valor da variável --muted (provavelmente um cinza claro) no estado :hover. */
+}
+
+#lista-startups li:active {
+/* Linha 18: Seleciona um item da lista (<li>) enquanto ele está sendo ativamente clicado (pressionado): */
+
+    transform: scale(0.98); /* Efeito de clique */
+/* Linha 19:  - transform: scale(0.98): Reduz ligeiramente o tamanho do item (para 98%) para dar um feedback visual de clique. */
+}
+
+/* A classe .sucesso já existe no style.css da semana 9 */
+/* Linha 20: Comentário - Informa que a classe '.sucesso' utilizada abaixo já tem estilos base definidos no CSS principal. */
+
+#lista-startups li.sucesso {
+/* Linha 21: Seleciona um item da lista (<li>) que TAMBÉM possua a classe 'sucesso': */
+
+    /* O style.css já define o fundo verde */
+/* Linha 22:  - Comentário: Indica que a cor de fundo verde provavelmente já está definida na regra '.sucesso' do CSS principal. */
+
+    font-weight: bold; /* Adiciona negrito para mais destaque */
+/* Linha 23:  - font-weight: bold: Torna o texto do item em negrito quando ele tem a classe 'sucesso'. */
+
+    border-left: 5px solid #057c01; /* Adiciona uma borda esquerda verde escura */
+/* Linha 24:  - border-left: Adiciona uma borda verde escura mais espessa no lado esquerdo do item para destacá-lo ainda mais quando tiver a classe 'sucesso'. */
+}

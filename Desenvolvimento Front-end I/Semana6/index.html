@@ -1,0 +1,132 @@
+<!DOCTYPE html> <!-- Informa ao navegador que o documento usa HTML5 -->
+<html lang="pt-BR"> <!-- Define o idioma principal da página para acessibilidade e SEO -->
+<head> <!-- Cabeçalho do documento: metadados e links externos -->
+  <meta charset="UTF-8" > <!-- Define a codificação de caracteres para suportar acentos -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" > <!-- Traz responsividade: 1 CSS pixel = 1 pixel da tela -->
+  <meta name="description" content="Página do Núcleo Incubador de Empreendimentos do Ifes de Alegre." > <!-- Descrição para buscadores -->
+  <title>Núcleo Incubador Ifes de Alegre</title> <!-- Título da aba do navegador -->
+  
+  <link rel="stylesheet" href="css/style.css">
+
+</head> <!-- Fim do cabeçalho -->
+
+<body> <!-- Corpo do documento: conteúdo visível ao usuário -->
+
+  <!-- =================== CABEÇALHO =================== -->
+  <header class="cabecalho-principal"> <!-- Cabeçalho fixo com logo e navegação -->
+    <h1 class="logo-texto"> <!-- Logo como texto (sem imagem) para simplicidade e SEO -->
+      <a href="#inicio" class="logo-link">Núcleo Incubador de Empreendimentos</a> <!-- Link que leva ao topo/início -->
+    </h1>
+
+    <nav class="navegacao-principal" aria-label="Navegação principal"> <!-- Navegação principal com rótulo para leitores de tela -->
+      <ul class="menu"> <!-- Lista de links -->
+        <li><a href="#inicio">Início</a></li> <!-- Link interno que rola até o início -->
+        <li><a href="#programas">Programas</a></li> <!-- Link interno para seção Programas -->
+        <li><a href="#">Startups</a></li> <!-- Link placeholder (poderá ser página externa no futuro) -->
+        <li><a href="#">Eventos</a></li> <!-- Link placeholder -->
+        <li><a href="#sobre">Sobre</a></li> <!-- Link interno para seção Sobre -->
+        <li><a href="#contato">Contato</a></li> <!-- Link interno para seção Contato -->
+      </ul>
+    </nav>
+  </header>
+  <!-- ============== FIM DO CABEÇALHO ================= -->
+
+  <!-- ============== CONTEÚDO PRINCIPAL ============== -->
+  <main id="inicio" class="conteudo-principal"> <!-- “main” ajuda acessibilidade; id permite linkar aqui pelo menu -->
+
+    <!-- ===================== HERO ===================== -->
+    <section class="hero" aria-labelledby="titulo-hero"> <!-- Seção de destaque da página (primeiro impacto visual) -->
+      <div class="hero-container"> <!-- Contêiner que agrupa texto e imagem; será flexível no CSS -->
+        <div class="hero-texto"> <!-- Bloco somente do texto da hero -->
+          <h2 id="titulo-hero"> <!-- Título principal da seção hero; id para aria-labelledby -->
+            Ambiente de inovação para transformar ideias em negócios de impacto
+          </h2>
+          <p> <!-- Parágrafo de apoio explicando a missão -->
+            Aceleramos a jornada de novas empresas, desde a concepção até a consolidação no mercado.
+          </p>
+          <a href="#programas" class="botao-cta">Conheça nossos programas</a> <!-- Chamada para ação que rola até Programas -->
+        </div>
+
+        <figure class="hero-imagem"> <!-- Uso de figure por semântica (imagem com significado no contexto) -->
+          <img src="image/incubadora.jpeg" alt="Logotipo da Incubadora do Ifes de Alegre" class="hero-logo"> <!-- Classe para estilização da imagem -->
+          <figcaption class="oculto">Imagem institucional da incubadora</figcaption> <!-- Legenda oculta (só para SR - Screen Readers, ou Leitores de Tela) -->
+        </figure>
+      </div>
+    </section>
+    <!-- =================== FIM HERO =================== -->
+
+    <!-- ==================== SOBRE ===================== -->
+    <section id="sobre" class="secao-sobre" aria-labelledby="titulo-sobre"> <!-- Seção Sobre, versão simples e sem grid -->
+      <header class="sobre-cabecalho"> <!-- Cabeçalho da seção Sobre -->        
+        <h3 id="titulo-sobre">Sobre o Núcleo Incubador</h3> <!-- Título da seção -->
+      </header>
+
+      <p class="sobre-texto"> <!-- Texto corrido e simples (parágrafo único) -->
+        O Núcleo Incubador do Ifes – Campus de Alegre é um ambiente de inovação que apoia ideias
+        e negócios em estágios iniciais. Conectamos empreendedores a <strong>mentorias</strong>,
+        <strong>infraestrutura</strong> e uma <strong>rede de parceiros</strong> para acelerar
+        soluções com impacto na região do Caparaó.
+      </p>
+
+      <p class="sobre-texto"> <!-- Segundo parágrafo para fluidez -->
+        Nosso foco é validar problemas reais, construir MVPs e orientar as equipes na tração do
+        negócio. Se você quer transformar conhecimento em um empreendimento sustentável,
+        <a href="#contato">fale com a nossa equipe</a> e conheça as trilhas disponíveis.
+      </p>
+    </section>
+    <!-- ================== FIM SOBRE =================== -->
+
+    <!-- =================== PROGRAMAS ================== -->
+    <section id="programas" class="secao-programas" aria-labelledby="titulo-programas"> <!-- Seção Programas -->
+      <h3 id="titulo-programas">Nossas Trilhas de Desenvolvimento</h3> <!-- Título da seção -->
+
+      <div class="programas-container">
+        <article class="card-programa"> <!-- Card 1: Pré-incubação -->
+            <h4>Pré-Incubação</h4> <!-- Subtítulo do card -->
+            <p>Fase de transformação de ideias em planos de negócio estruturados:
+            validação do problema, entrevistas com usuários e protótipos de baixa fidelidade.</p> <!-- Descrição -->
+        </article>
+
+        <article class="card-programa destaque"> <!-- Card 2: Incubação (com destaque visual) -->
+            <h4>Incubação</h4>
+            <p>Desenvolvimento intensivo com acesso a infraestrutura, laboratórios e assessorias
+            (gestão, jurídico, marketing). Construção do MVP, métricas e tração.</p>
+        </article>
+
+        <article class="card-programa"> <!-- Card 3: Pós-incubação -->
+            <h4>Pós-Incubação</h4>
+            <p>Apoio contínuo à empresa graduada: consolidação do produto no mercado, indicadores
+            de performance e conexões com parceiros estratégicos.</p>
+        </article>
+      </div>
+    </section>
+    <!-- ================= FIM PROGRAMAS ================ -->
+
+    <!-- ==================== CONTATO =================== -->
+    <section id="contato" class="secao-contato" aria-labelledby="titulo-contato"> <!-- Seção de contato -->
+      <span class="selo-contato">Fale Conosco</span> <!-- Selo visual sobreposto -->
+      <h3 id="titulo-contato">Pronto para começar sua jornada?</h3> <!-- Título da seção -->
+      <p>Entre em contato com nossa equipe para mais informações sobre os editais e programas.</p> <!-- Texto de apoio -->
+
+      <address class="bloco-contato"> <!-- “address” semântico para informações de contato -->
+        <p><strong>Coordenador Adjunto:</strong> <!-- Cargo em destaque -->
+          Cleziel Franzoni da Costa</p> <!-- Nome do contato -->
+      </address>
+
+      <p> <!-- Botão de email (CTA) -->
+        <a href="mailto:incubadora.ale@ifes.edu.br" class="botao-cta">Enviar E-mail para Incubadora</a>
+      </p>
+    </section>
+    <!-- ================== FIM CONTATO ================= -->
+
+  </main>
+  <!-- ============ FIM CONTEÚDO PRINCIPAL ============ -->
+
+  <!-- ===================== RODAPÉ ==================== -->
+  <footer class="rodape-principal"> <!-- Rodapé da página -->
+    <small>© 2025 Instituto Federal do Espírito Santo - Campus de Alegre</small> <!-- Nota legal curta -->
+  </footer>
+  <!-- =================== FIM RODAPÉ ================== -->
+
+</body> <!-- Fim do corpo -->
+</html> <!-- Fim do documento -->

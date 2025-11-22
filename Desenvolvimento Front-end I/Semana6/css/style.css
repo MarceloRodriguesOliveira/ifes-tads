@@ -1,0 +1,307 @@
+/* ================= BLOCO 1: BASE / RESET ================ */
+*, *::before, *::after { /* Seleciona todos os elementos e pseudo-elementos */
+  box-sizing: border-box; /* Inclui borda e padding no cálculo de width/height (evita “quebras”) */
+}
+
+html { /* Elemento raiz do documento */
+  scroll-behavior: smooth; /* Faz âncoras (links #) rolarem com suavidade */
+}
+
+body { /* Corpo da página */
+  margin: 0; /* Remove margem padrão do navegador */
+  padding: 0; /* Remove padding padrão */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fonte padrão legível */
+  color: #212529; /* Cor de texto base (cinza bem escuro) */
+  background-color: #ffffff; /* Fundo branco para contraste e neutralidade */
+}
+
+/* ============== Variáveis (tema de cores/medidas) ============== */
+:root { /* Variáveis CSS disponíveis no documento todo */
+  --primary: #0d6efd;        /* Azul principal (botões, destaques) */
+  --dark: #212529;           /* Cinza escuro (texto, fundos escuros) */
+  --light: #ffffff;          /* Branco (texto sobre fundo escuro / botões claros) */
+  --muted: #f8f9fa;          /* Cinza muito claro (fundos suaves) */
+  --espacamento: 16px;       /* Espaçamento base para paddings/margens */
+  --altura-cabecalho: 90px;  /* Altura do header fixo (usada em cálculos) */
+  --raio: 8px;               /* Raio padrão de borda arredondada */
+  --max-width: 1200px; /* Tamanho padronizado para largura máxima da página */
+}
+
+/* ================== BLOCO 2: CABEÇALHO ================== */
+.cabecalho-principal { /* Header fixo no topo */
+  position: fixed;            /* Fica “colado” na janela, não rola com a página */
+  top: 0;                     /* Encosta no topo */
+  left: 0;                    /* Encosta à esquerda */
+  width: 100%;                /* Ocupa toda a largura da janela */
+  height: var(--altura-cabecalho); /* Altura definida na variável */
+  background-color: var(--light);  /* Fundo branco */
+  border-bottom: 1px solid #ddd;   /* Linha sutil de separação */
+  display: flex;              /* Flexbox para alinhar logo e menu */
+  justify-content: space-between; /* Logo à esquerda, menu à direita */
+  align-items: center;        /* Alinhamento vertical central */
+  padding: 0 var(--espacamento);   /* Respiro lateral */
+  z-index: 1000;  /* Quando há mais de um conteúdo na página, um pode sobrepor o outro, com o z-index alto, o menu ficará acima do resto do conteúdo (importante) */
+}
+
+.logo-texto { /* h1 do logo */
+  font-size: 1.2rem;          /* Tamanho do texto do logo */
+  margin: 0;                  /* Remove margens padrão do h1 */
+  font-weight: 700;           /* Peso maior para dar destaque */
+}
+
+.logo-link { /* Link do logo */
+  text-decoration: none;      /* Remove sublinhado do link */
+  color: var(--dark);         /* Cor do texto do logo */
+}
+
+.navegacao-principal .menu { /* Lista do menu */
+  list-style: none;           /* Remove marcadores da lista */
+  display: flex;              /* Itens lado a lado */
+  gap: var(--espacamento);    /* Espaço entre os itens */
+  margin: 0;                  /* Remove margens padrão */
+  padding: 0;                 /* Remove padding padrão */
+}
+
+.navegacao-principal a { /* Links do menu */
+  color: var(--dark);         /* Cor do texto */
+  text-decoration: none;      /* Sem sublinhado */
+  font-weight: 500;           /* Levemente mais grosso para legibilidade */
+  padding: 8px;               /* Aumenta área clicável */
+  border-radius: 6px;         /* Bordas arredondadas suaves no hover */
+}
+
+.navegacao-principal a:hover { /* Efeito visual ao passar o mouse */
+  color: var(--primary);      /* Muda para o azul do tema */
+  text-decoration: underline; /* Sublinha para sinalizar interatividade */
+}
+
+/* ========= Ajuste: empurra o conteúdo por causa do header fixo ========= */
+.conteudo-principal { /* Elemento <main> */
+  padding-top: var(--altura-cabecalho); /* Evita que o topo do conteúdo fique “sob” o header */
+}
+
+/* =================== BLOCO 3: HERO =================== */
+.hero { /* Seção de destaque */
+  background-color: var(--muted);                 /* Fundo suave para diferenciar da área branca */
+  display: flex;                                  /* Flex apenas para centralizar o container */
+  align-items: center;                            /* Centraliza verticalmente o container */
+  padding: calc(var(--espacamento) * 3) var(--espacamento); /* Espaçamento interno ([16*3]px vertical, 16px horizontal) */
+  min-height: calc(90vh - var(--altura-cabecalho)); /* Altura mínima: 90% da tela menos a altura do header */
+  /* ^ Nota: calc() permite subtrair a altura do cabeçalho para que a hero “apareça” inteira na primeira dobra */
+}
+
+.hero-container { /* Agrupa texto e imagem para controlar layout responsivo */
+  display: flex;                 /* Flexbox para controlar ordem e direção */
+  flex-direction: column;        /* MOBILE-FIRST: empilha texto e imagem (coluna) */
+  gap: calc(var(--espacamento) * 2); /* Espaço entre texto e imagem (32px) */
+  max-width: var(--max-width);             /* Limita a largura máxima (para não “espalhar” demais no desktop) */
+  width: 100%;                   /* O container ocupa toda a largura disponível até 1200px */
+  margin: 0 auto;                /* Centraliza horizontalmente */
+}
+
+.hero-texto { /* Bloco de texto da hero */
+  text-align: center;            /* Centraliza texto no mobile */
+  order: 2;                      /* No mobile, texto vem depois da imagem (order controla a ordem visual) */
+}
+
+.hero-texto h2 { /* Título grande da hero */
+  color: var(--primary);         /* Cor azul do tema para destacar a mensagem */
+  font-size: 2rem;               /* Tamanho amplo para impacto */
+  margin: 0 0 8px 0;             /* Remove margem superior e deixa 8px abaixo */
+  line-height: 1.2;              /* Altura de linha mais “compacta” para títulos */
+}
+
+.hero-texto p { /* Parágrafo da hero */
+  margin: 0;                     /* Remove margens extras */
+  line-height: 1.6;              /* Altura de linha confortável para leitura */
+}
+
+.botao-cta { /* Botão de chamada para ação (reutilizável) */
+  display: inline-block;         /* Permite padding e dimensões de bloco mantendo fluxo inline */
+  background-color: var(--primary); /* Fundo azul do tema */
+  color: var(--light);           /* Texto branco para contraste */
+  padding: 12px 24px;            /* Tamanho confortável de clique */
+  text-decoration: none;         /* Sem sublinhado */
+  border-radius: var(--raio);    /* Borda arredondada suave */
+  font-weight: 700;              /* Texto mais encorpado */
+  margin-top: var(--espacamento);/* Espaço acima do botão */
+  transition: transform .2s, box-shadow .2s; /* Animações suaves no hover */
+}
+
+.botao-cta:hover { /* Efeito ao passar o mouse no CTA */
+  transform: translateY(-2px);   /* Sobe levemente (sensação de “flutuar”) */
+  box-shadow: 0 4px 12px rgba(0,0,0,.15); /* Sombra suave para profundidade */
+}
+
+.hero-imagem { /* Bloco da imagem na hero */
+  order: 1;                      /* No mobile, a imagem vem primeiro */
+  text-align: center;            /* Garante que a imagem fique centralizada */
+}
+
+.hero-logo { /* Estilo específico da imagem da hero */
+  max-width: 100%;               /* Nunca ultrapassa o container (responsiva) */
+  height: auto;                  /* Mantém a proporção da imagem */
+  max-height: 300px;             /* Limita a altura para não ocupar toda a tela no mobile */
+  border-radius: var(--raio);    /* Cantos levemente arredondados */
+}
+
+.oculto { /* Classe utilitária para esconder texto visualmente, mas manter para leitores de tela */
+  position: absolute;            /* Remove do fluxo normal */
+  width: 1px; height: 1px;       /* Reduz dimensão ao mínimo */
+  padding: 0; margin: -1px;      /* Evita ocupar espaço */
+  overflow: hidden;              /* Não deixa conteúdo “vazar” */
+  clip: rect(0, 0, 0, 0);        /* Técnica de “visually hidden” */
+  white-space: nowrap;           /* Evita quebra de linha */
+  border: 0;                     /* Sem borda */
+}
+
+/* =================== BLOCO 4: SOBRE (simples) =================== */
+.secao-sobre { /* Seção Sobre simplificada (sem grid/colunas) */
+  padding: calc(var(--espacamento) * 3) var(--espacamento); /* 48px vertical, 16px horizontal */
+  max-width: 900px;              /* Largura máxima da linha de leitura */
+  margin: 0 auto;                /* Centraliza a seção na página */
+}
+
+
+.sobre-selo { /* Selo/etiqueta pequena acima do título */
+  display: inline-block;         /* Para permitir padding e borda */
+  background: #e9f2ff;           /* Fundo clarinho relacionado ao tema azul */
+  color: var(--primary);         /* Texto no azul do tema */
+  font-weight: 700;              /* Destaque */
+  padding: 6px 10px;             /* Área de toque/leitura confortável */
+  border-radius: 999px;          /* “Pílula” (completamente arredondado) */
+  margin-bottom: 8px;            /* Espaço abaixo do selo */
+  font-size: .85rem;             /* Texto um pouco menor que o corpo */
+  letter-spacing: .2px;          /* Leve espaçamento das letras para legibilidade */
+}
+
+.secao-sobre h3 { /* Título da seção Sobre */
+  margin: 6px 0 8px 0;           /* Margens enxutas */
+  font-size: 1.6rem;             /* Tamanho intermediário (abaixo da hero) */
+  color: var(--dark);            /* Cinza escuro para bom contraste */
+}
+
+.sobre-texto { /* Parágrafos do Sobre */
+  margin: 0 0 var(--espacamento) 0; /* Espaço depois de cada parágrafo */
+  line-height: 1.7;              /* Linha mais alta para texto corrido */
+  font-size: 1rem;               /* Tamanho padrão de leitura */
+}
+
+.sobre-texto a { /* Links dentro do texto do Sobre */
+  color: var(--primary);         /* Cor azul do tema para coerência */
+  text-decoration: underline;    /* Sublinhado para reforçar que é link */
+}
+
+/* =================== BLOCO 5: PROGRAMAS =================== */
+
+.programas-container{
+    display: flex;
+    gap: calc(var(--espacamento)*3);
+}
+.secao-programas { /* Container da seção de Programas */
+  padding: calc(var(--espacamento) * 3) var(--espacamento); /* 48px vertical, 16px horizontal */
+  max-width: var(--max-width);              /* Mantém coluna de leitura confortável */
+  margin: 0 auto;                /* Centraliza */
+  text-align: left;              /* Texto à esquerda por padrão */
+}
+
+.secao-programas h3 { /* Título da seção */
+  margin: 0 0 calc(var(--espacamento) * 1.5) 0; /* Espaço abaixo (24px) */
+  font-size: 1.6rem;             /* Título equivalente ao do Sobre */
+  text-align: center; /* Alinha o texto no centro da página */ 
+}
+
+.card-programa { /* “Card” simples (na verdade, um article estilizado) */
+  background-color: var(--muted); /* Fundo cinza claro */
+  border: 1px solid #ddd;        /* Borda suave */
+  border-radius: var(--raio);    /* Bordas arredondadas */
+  padding: var(--espacamento);   /* Respiro interno */
+  margin-bottom: var(--espacamento); /* Espaço entre cards */
+}
+
+.card-programa h4 { /* Subtítulo do card */
+  margin: 0 0 6px 0;             /* Espaço abaixo do subtítulo */
+  font-size: 1.2rem;             /* Um pouco maior que o texto comum */
+}
+
+.card-programa p { /* Parágrafos internos do card */
+  margin: 0;                     /* Sem margens excedentes */
+  line-height: 1.6;              /* Boa altura de linha para leitura */
+}
+
+.card-programa.destaque { /* Card com “faixa” de destaque à esquerda */
+  border-left: 4px solid var(--primary); /* Linha azul à esquerda para chamar atenção */
+}
+
+/* =================== BLOCO 6: CONTATO =================== */
+.secao-contato { /* Seção de contato com fundo escuro */
+  background-color: var(--dark); /* Fundo cinza-escuro */
+  color: var(--light);           /* Texto branco para contraste */
+  padding: calc(var(--espacamento) * 3) var(--espacamento); /* 48px vertical, 16px horizontal */
+  text-align: center;            /* Centraliza informações de contato */
+  position: relative;            /* Necessário para posicionar o selo absoluto */
+}
+
+.selo-contato { /* Selo “Fale Conosco” que fica “flutuando” acima da seção */
+  position: absolute;            /* Sai do fluxo normal e permite sobrepor */
+  top: -15px;                    /* Sobe 15px acima do topo da seção */
+  left: 50%;                     /* Centraliza na horizontal… */
+  transform: translateX(-50%);   /* …compensando 50% da própria largura */
+  background-color: #ffc107;     /* Amarelo (contrasta no fundo escuro) */
+  color: var(--dark);            /* Texto escuro para legibilidade */
+  padding: 6px 12px;             /* Respiro interno do selo */
+  border-radius: 6px;            /* Bordas arredondadas */
+  font-weight: 700;              /* Destaque tipográfico */
+}
+
+.secao-contato h3 { /* Título da seção de contato */
+  margin: 0 0 8px 0;             /* Espaço inferior breve */
+  font-size: 1.6rem;             /* Tamanho coerente com outras seções */
+}
+
+.secao-contato p { /* Parágrafos na seção de contato */
+  margin: 0 0 var(--espacamento) 0; /* Espaço abaixo de cada parágrafo */
+  line-height: 1.6;              /* Altura de linha confortável */
+}
+
+.bloco-contato { /* address: bloco com informações de contato */
+  font-style: normal;            /* Anula itálico padrão do <address> para ficar uniforme */
+  margin-bottom: var(--espacamento); /* Espaço abaixo antes do botão */
+}
+
+/* =================== BLOCO 7: RODAPÉ =================== */
+.rodape-principal { /* Rodapé simples */
+  background-color: #222;        /* Preto quase total */
+  color: #eee;                   /* Cinza claro para contraste confortável */
+  text-align: center;            /* Centraliza o texto do rodapé */
+  padding: var(--espacamento);   /* Respiro interno */
+}
+
+/* =================== BLOCO 8: MEDIA QUERIES =================== */
+/* A partir de 768px (tablets/desktop pequeno) mudamos alguns layouts */
+@media (min-width: 768px) {
+  .logo-texto { /* Logo maior em telas médias+ */
+    font-size: 1.5rem;           /* Cresce um pouco o impacto visual do logo */
+  }
+
+  .hero-container { /* Hero “lado a lado” no desktop/tablet */
+    flex-direction: row;         /* Passa de coluna (mobile) para linha (desktop) */
+    align-items: center;         /* Garante alinhamento vertical */
+  }
+
+  .hero-texto { /* Distribui o espaço entre texto e imagem */
+    text-align: left;            /* Texto volta a alinhar à esquerda no desktop */
+    order: 1;                    /* Texto antes da imagem no desktop */
+    flex-basis: 60%;             /* Ocupa ~60% da largura do container */
+  }
+
+  .hero-imagem { /* Bloco da imagem na hero */
+    order: 2;                    /* Imagem fica à direita no desktop */
+    flex-basis: 40%;             /* Ocupa ~40% da largura */
+  }
+
+  .secao-sobre,
+  .secao-programas { /* Seções de texto: aumentamos um pouco a “respiração” */
+    padding: calc(var(--espacamento) * 4) var(--espacamento); /* 64px vertical, 16px horizontal */
+  }
+}
